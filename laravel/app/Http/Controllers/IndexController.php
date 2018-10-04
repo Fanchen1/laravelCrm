@@ -27,10 +27,12 @@ class IndexController extends Controller
         }else{
             $user=session('user.account');
             $city='河北';
-            $weather=$this->weather($city);
+//            $weather=$this->weather($city);
             return view('welcome',['user'=>$user]);
+
         }
     }
+
     /**
      * 退出
      * @param Request $request
@@ -44,7 +46,7 @@ class IndexController extends Controller
     public function weather()
     {
         $obj=new \Memcache();
-        $res=$obj->connect('139.199.115.147','11211');
+        $res=$obj->connect('123.207.171.134','11211');
 //        $server=$_SERVER['REMOTE_ADDR'];
 //        $json=file_get_contents("http://ip.taobao.com/service/getIpInfo.php?ip=$server");
         //dump($json);exit;
@@ -55,7 +57,7 @@ class IndexController extends Controller
         $pathFile = './' . $tmpKey;
         if (!$obj->get($tmpKey)) {
             //调用天气接口获取数据
-            $json = $this->curlRequest('https://www.sojson.com/open/api/weather/json.shtml?city=' . $city);
+            $json = $this->curlRequest('https://www.sojson.com/open/api/weather/json.shtml?city='. $city);
             $arr = json_decode($json, true);
             $tmp = $arr['data']['forecast'][0];
 
@@ -69,7 +71,6 @@ class IndexController extends Controller
     //编码
     //调用接口
         $data = '<br>'.$city . '天气：' . $tmp['high'] . '，' . $tmp['low'] . ',天气' . $tmp['type'];
-
         echo $data;
     }
     function curlRequest($url, $data = '')

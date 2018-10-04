@@ -133,7 +133,7 @@
             return false;
         }
         $.ajax({
-            url:'/check',
+            url:'/index.php/check',
             data:'username='+username+'&pwd='+pwd,
             type:'post',
             dataType:'json',
@@ -141,7 +141,7 @@
             success:function(json_info){
                 if(json_info.status==100){
                     layer.msg('登录成功',{icon:1},function(){
-                        location.href='/index';
+                        location.href='/index.php/index';
                     })
                 }else{
                     layer.msg(json_info.msg,{icon:2});

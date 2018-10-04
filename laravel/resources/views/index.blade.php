@@ -9,11 +9,11 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="Admin/css/font.css">
-    <link rel="stylesheet" href="Admin/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="Admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Admin/js/xadmin.js"></script>
+    <link rel="stylesheet" href="/Admin/css/font.css">
+    <link rel="stylesheet" href="/Admin/css/xadmin.css">
+    <script type="text/javascript" src="/Admin/js/jquery-3.2.1.min.js"></script>
+    <script src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
     <script src="{{asset('/jquery/jquery-3.2.1.min.js')}}"></script>
 
     <script type="text/javascript" src="{{asset('/layer/layer.js')}}"></script>
@@ -43,7 +43,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
                 <dd><a href="/">切换帐号</a></dd>
-                <dd><a href="/quit">退出</a></dd>
+                <dd><a href="quit">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
@@ -64,7 +64,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/index.php/userList">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户列表</cite>
 
@@ -83,30 +83,6 @@
                             <cite>用户管理</cite>
                             {{--<i class="iconfont nav_right">&#xe697;</i>--}}
                         </a>
-                        {{--<ul class="sub-menu">--}}
-                            {{--<li>--}}
-                                {{--<a _href="xxx.html">--}}
-                                    {{--<i class="iconfont">&#xe6a7;</i>--}}
-                                    {{--<cite>用户列表</cite>--}}
-
-                                {{--</a>--}}
-                            {{--</li >--}}
-                            {{--<li>--}}
-                                {{--<a _href="xx.html">--}}
-                                    {{--<i class="iconfont">&#xe6a7;</i>--}}
-                                    {{--<cite>用户删除</cite>--}}
-
-                                {{--</a>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<a _href="xx.html">--}}
-                                    {{--<i class="iconfont">&#xe6a7;</i>--}}
-                                    {{--<cite>等级管理</cite>--}}
-
-                                {{--</a>--}}
-                            {{--</li>--}}
-
-                        {{--</ul>--}}
                     </li>
                 </ul>
             </li>
@@ -118,7 +94,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/order">
+                        <a _href="/index.php/order">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单添加</cite>
                         </a>
@@ -126,7 +102,7 @@
                 </ul>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/order_list">
+                        <a _href="/index.php/order_list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
                         </a>
@@ -151,14 +127,14 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>城市联动</cite>
+                    <cite>售后管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="city.html">
+                        <a _href="">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>三级地区联动</cite>
+                            <cite>售后列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -281,7 +257,7 @@
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='/welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
     </div>
@@ -291,7 +267,7 @@
 <!-- 中部结束 -->
 <!-- 底部开始 -->
 <div class="footer">
-    <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>
+    <div class="copyright">Copyright ?2017 x-admin v2.3 All Rights Reserved</div>
 </div>
 {{--<!-- 底部结束 -->--}}
 {{--<script>--}}
