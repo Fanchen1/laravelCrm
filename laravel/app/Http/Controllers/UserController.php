@@ -243,7 +243,6 @@ class UserController extends Controller
         }else{
             return $data=['status'=>1,'msg'=>'删除有误，再试试吧！'];
         }
-
     }
 
 

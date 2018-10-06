@@ -24,9 +24,9 @@
 <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">首页</a>
-        <a href="">客户管理</a>
+        <a href="">售后管理</a>
         <a>
-            <cite>客户列表</cite></a>
+            <cite>售后列表</cite></a>
       </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
@@ -42,7 +42,7 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加客户','/index.php/userAdd',1000,600)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加售后','/index.php/aftersaleAdd',1000,600)"><i class="layui-icon"></i>添加</button>
         {{--<span class="x-right" style="line-height:40px">共有数据：88 条</span>--}}
     </xblock>
     <table class="layui-table">
@@ -52,41 +52,71 @@
                 <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
-            <th>用户名称</th>
-            <th>用户手机号</th>
-            <th>省份</th>
-            <th>市</th>
-            <th>区</th>
-            <th>详情地址</th>
-            <th>客户来源</th>
-            <th>客户类型</th>
-            <th>客户级别</th>
-            <th>客户所选产品</th>
+            <th>反馈主题</th>
+            <th>相关产品</th>
+            <th>联系人</th>
+            <th>反馈分类</th>
+            <th>反馈日期</th>
+            <th>详情备注</th>
+            <th>是否解决</th>
+            <th>结束日期</th>
+            <th>处理结果</th>
+            <th>添加时间</th>
+            <th>修改时间</th>
+            <th>处理</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($user as $v)
+        @foreach($aftersale as $v)
             <tr>
                 <td>
                     <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
                 </td>
-                <td> {{$v->user_id}}</td>
-                <td>{{$v->user_name}}</td>
-                <td>{{$v->user_tel}}</td>
-                <td>{{$v->user_province}}</td>
-                <td>{{$v->user_city}}</td>
-                <td>{{$v->user_area}}</td>
-                <td>{{$v->user_address}}</td>
-                <td>{{$v->user_source}}</td>
-                <td>{{$v->user_type}}</td>
-                <td>{{$v->user_rank}}</td>
+                <td> {{$v->aftersale_id}}</td>
+                <td>{{$v->aftersale_issue}}</td>
                 <td>{{$v->product_name}}</td>
+                <td>{{$v->user_name}}</td>
+                <td>{{$v->aftersale_classify}}</td>
+                <td>{{$v->aftersale_time}}</td>
+                <td>{{$v->aftersale_contents}}</td>
+                <td>
+                    @if($v->is_solve == '待解决')
+                        <span style="color: #ff3718">{{$v->is_solve}}</span>
+                    @else
+                        <span style="color: #0000F0">{{$v->is_solve}}</span>
+                    @endif
+                </td>
+                <td>
+                    @if($v->result_time == '还未处理哦！')
+                        <span style="color: #ff188e;">{{$v->result_time}}</span>
+                    @else
+                        <span style="color: #0000F0;">{{$v->result_time}}</span>
+                    @endif
+                </td>
+                <td>
+                    @if($v->result == '还未处理哦！')
+                        <span style="color: #ff188e;">{{$v->result}}</span>
+                    @else
+                        <span style="color: #0000F0;">{{$v->result}}</span>
+                    @endif
+                </td>
+                <td>{{$v->aftersale_ctime}}</td>
+                <td>
+                    @if($v->aftersale_utime == '还未修改哦！')
+                        <span style="color: #9561e2;">{{$v->aftersale_utime}}</span>
+                    @else
+                        <span style="color: #0000F0;">{{$v->aftersale_utime}}</span>
+                    @endif
+                </td>
+                <td>
+                    <button class="layui-btn layui-btn-radius layui-btn-warm" type="button" onclick="x_admin_show('处理','/index.php/dispose?id={{$v->aftersale_id}}',1000,600)"> <i class="layui-icon">&#xe654;</i>处理</button>
+                </td>
                 <td class="td-manage">
-                    <a title="编辑"  onclick="x_admin_show('编辑','/index.php/userUpdate?id={{$v->user_id}}',1000,600)" href="javascript:;">
+                    <a title="编辑"  onclick="x_admin_show('编辑','/index.php/aftersaleUpdate?id={{$v->aftersale_id}}',1000,600)" href="javascript:;">
                         <i class="layui-icon">&#xe642;</i>
                     </a>
-                    <a title="删除" onclick="member_del(this,{{$v->user_id}})" href="javascript:;">
+                    <a title="删除" onclick="member_del(this,{{$v->aftersale_id}})" href="javascript:;">
                         <i class="layui-icon">&#xe640;</i>
                     </a>
                 </td>
@@ -96,7 +126,7 @@
     </table>
     <div class="page">
         <div>
-            {{ $user->links() }}
+            {{ $aftersale->links() }}
         </div>
     </div>
 
@@ -122,7 +152,7 @@
     function member_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
             $.ajax({
-                url: '/index.php/userDel',
+                url: '/index.php/aftersaleDel',
                 type: 'post',
                 data: 'id='+id+'&_token=' + '{{csrf_token()}}',
                 dataType: 'json',
