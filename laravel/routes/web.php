@@ -57,6 +57,79 @@ Route::any('/aftersaleUpdateDo','AftersaleController@aftersaleUpdateDo');//售�
 Route::any('/aftersaleDel','AftersaleController@aftersaleDel'); //售后执行 -- 售后假删除
 Route::any('/aftersaleDelAll','AftersaleController@aftersaleDelAll'); //售后执行 -- 售后批量假删除
 
+//RBAC
+    //权限分类
+    Route::any('/PowerAdd','PowerController@PowerAdd');//权限添加
+    Route::any('/PowerAddDo','PowerController@PowerAddDo');//权限执行 -- 添加
+    Route::any('/PowerList','PowerController@PowerList');//权限添加
+
+
+
+
+//跟单
+Route::any('tailorderAdd', 'admin\TailorderController@tailorderAdd');
+Route::any('tailorderAddDo', 'admin\TailorderController@tailorderAddDo');
+Route::any('tailorderList', 'admin\TailorderController@tailorderList');
+Route::any('tailorderDel', 'admin\TailorderController@tailorderDel');
+Route::any('tailorderDelAll', 'admin\TailorderController@tailorderDelAll');
+Route::any('tailorderUpd', 'admin\TailorderController@tailorderUpd');
+Route::any('tailorderUpdDo', 'admin\TailorderController@tailorderUpdDo');
+
+//跟单类型添加
+Route::any('tailorderTypeAdd', 'admin\TailorderController@tailorderTypeAdd');
+Route::any('tailorderTypeAddDo', 'admin\TailorderController@tailorderTypeAddDo');
+//跟单进度添加
+Route::any('tailorderPlanAdd', 'admin\TailorderController@tailorderPlanAdd');
+Route::any('tailorderPlanAddDo', 'admin\TailorderController@tailorderPlanAddDo');
+
+/**
+ *费用管理
+ */
+//展示
+Route::any('costList', 'admin\CostController@costList');
+//删除
+Route::any('costDel', 'admin\CostController@costDel');
+Route::any('costDelAll', 'admin\CostController@costDelAll');
+
+//添加
+Route::any('costAdd', 'admin\CostController@costAdd');
+Route::any('costAddDo', 'admin\CostController@costAddDo');
+
+//费用类型添加
+Route::any('costTypeAdd', 'admin\CostController@costTypeAdd');
+Route::any('costTypeAddDo', 'admin\CostController@costTypeAddDo');
+
+//修改
+Route::any('costUpd', 'admin\CostController@costUpd');
+Route::any('costUpdDo', 'admin\CostController@costUpdDo');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::any('/comment','UserController@comment');//考试  -- 评论
+
+
+
+
+

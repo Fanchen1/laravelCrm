@@ -70,22 +70,9 @@
 
                         </a>
                     </li >
-                    <li>
-                        <a _href="member-del.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>用户删除</cite>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe70b;</i>
-                            <cite>用户管理</cite>
-                            {{--<i class="iconfont nav_right">&#xe697;</i>--}}
-                        </a>
-                    </li>
                 </ul>
             </li>
+
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
@@ -112,14 +99,35 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>分类管理</cite>
+                    <cite>跟单管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="cate.html">
+                        <a _href="/index.php/tailorderAdd">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>多级分类</cite>
+                            <cite>新增跟单</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/index.php/tailorderList">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>跟单列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>费用管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/index.php/costList">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>费用列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -153,23 +161,18 @@
                         </a>
                     </li >
                     <li>
+                        <a _href="/index.php/PowerList">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>权限管理</cite>
+                        </a>
+                    </li >
+                    <li>
                         <a _href="admin-role.html">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>角色管理</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="admin-cate.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限分类</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="admin-rule.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限管理</cite>
-                        </a>
-                    </li >
+
                 </ul>
             </li>
             <li>
