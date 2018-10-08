@@ -37,7 +37,7 @@
             <input class="layui-input" placeholder="开始日" name="start" id="start">
             <input class="layui-input" placeholder="截止日" name="end" id="end">
             <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            <button class="layui-btn"  type="button" name="sou"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
     <xblock>
@@ -49,7 +49,7 @@
         <thead>
         <tr>
             <th>
-                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary" ><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
             <th>用户名称</th>
@@ -65,11 +65,11 @@
             <th>操作</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody name="shu">
         @foreach($user as $v)
             <tr>
                 <td>
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id={{$v->user_id}}><i class="layui-icon">&#xe605;</i></div>
                 </td>
                 <td> {{$v->user_id}}</td>
                 <td>{{$v->user_name}}</td>
@@ -142,18 +142,52 @@
         });
     }
 
-
-
     function delAll (argument) {
 
         var data = tableCheck.getData();
 
         layer.confirm('确认要删除吗？'+data,function(index){
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
+            $.ajax({
+                url: '/index.php/userDelAll',
+                type: 'post',
+                data: 'id='+data+'&_token=' + '{{csrf_token()}}',
+                dataType: 'json',
+                async: false,
+                success: function (json_info) {
+                    if (json_info.status == 1000) {
+                        layer.msg('删除成功', {icon: 1});
+                        $(".layui-form-checked").not('.header').parents('tr').remove();
+                        return false;
+                    } else {
+                        layer.msg(json_info.msg, {icon: 0});
+                        return false;
+                    }
+                }
+            });
         });
     }
+
+    /* 客户搜索*/
+    $('[name=sou]').on('click',function(){
+        var start = $('[name=start]').val();
+        var end = $('[name=end]').val();
+        var username = $('[name=username]').val();
+        $.ajax({
+            url: '/index.php/userList',
+            type: 'post',
+            data: 'start='+start+'&end='+end+'&username='+username+'&_token=' + '{{csrf_token()}}',
+            dataType: 'json',
+            async: false,
+            success: function (json_info) {
+                if (json_info.status == 1000) {
+                    $('#shu').html(json_info);
+                    return false;
+                }
+            }
+        });
+    });
+
+
 </script>
 
 

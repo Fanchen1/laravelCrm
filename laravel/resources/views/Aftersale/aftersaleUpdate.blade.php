@@ -62,6 +62,7 @@
                     @endforeach
                 </select>
             </div>
+            <button class="layui-btn layui-btn-radius layui-btn-warm" type="button" onclick="x_admin_show('添加反馈分类','/index.php/aftersaleClassify',400,160)"> <i class="layui-icon">&#xe654;</i>添加</button>
         </div>
 
         <div class="layui-form-item">

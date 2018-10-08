@@ -41,7 +41,7 @@ Route::any('/userSourceDo','UserController@userSourceDo');//客户执行 --来�
 Route::any('/userAddDo','UserController@userAddDo');//客户执行 --客户添加
 Route::any('/userUpdateDo','UserController@userUpdateDo'); //客户执行 --客户 更新
 Route::any('/userDel','UserController@userDel'); //客户执行 -- 客户假删除
-
+Route::any('/userDelAll','UserController@userDelAll'); //客户执行 -- 客户批量假删除
 //售后
 Route::any('/aftersaleList','AftersaleController@aftersaleList');//售后 --列表
 Route::any('/aftersaleAdd','AftersaleController@aftersaleAdd');//售后 --添加
@@ -54,19 +54,9 @@ Route::any('/aftersaleClassifyDo','AftersaleController@aftersaleClassifyDo');//�
 Route::any('/aftersaleAddDo','AftersaleController@aftersaleAddDo');//售后执行 --售后添加
 Route::any('/disposeDo','AftersaleController@disposeDo');//售后执行 --处理修改
 Route::any('/aftersaleUpdateDo','AftersaleController@aftersaleUpdateDo');//售后执行 --修改
-Route::any('/aftersaleDel','AftersaleController@aftersaleDel'); //客户执行 -- 客户假删除
-
-
-
-
-
-
-
-
-
+Route::any('/aftersaleDel','AftersaleController@aftersaleDel'); //售后执行 -- 售后假删除
+Route::any('/aftersaleDelAll','AftersaleController@aftersaleDelAll'); //售后执行 -- 售后批量假删除
 
 
 
 Route::any('/comment','UserController@comment');//考试  -- 评论
-
-

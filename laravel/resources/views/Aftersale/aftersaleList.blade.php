@@ -71,7 +71,7 @@
         @foreach($aftersale as $v)
             <tr>
                 <td>
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id={{$v->aftersale_id}}><i class="layui-icon">&#xe605;</i></div>
                 </td>
                 <td> {{$v->aftersale_id}}</td>
                 <td>{{$v->aftersale_issue}}</td>
@@ -176,12 +176,26 @@
 
     function delAll (argument) {
 
-        var data = tableCheck.getData();
+        var  id= tableCheck.getData();
+        layer.confirm('确认要删除吗？'+id,function(index){
+            $.ajax({
+                url: '/index.php/aftersaleDelAll',
+                type: 'post',
+                data: 'id='+id+'&_token=' + '{{csrf_token()}}',
+                dataType: 'json',
+                async: false,
+                success: function (json_info) {
+                    if (json_info.status == 1000) {
+                        layer.msg('删除成功', {icon: 1});
+                        $(".layui-form-checked").not('.header').parents('tr').remove();
+                        return false;
+                    } else {
+                        layer.msg(json_info.msg, {icon: 0});
+                        return false;
+                    }
+                }
+            });
 
-        layer.confirm('确认要删除吗？'+data,function(index){
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
         });
     }
 </script>

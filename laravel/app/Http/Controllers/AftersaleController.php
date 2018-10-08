@@ -14,7 +14,7 @@ class AftersaleController extends Controller
             ->join('crm_user','crm_aftersale.user_id','=','crm_user.user_id')
             ->join('crm_aftersale_classify','crm_aftersale.classify_id','=','crm_aftersale_classify.classify_id')
             ->where(['crm_aftersale.status'=>1])
-            ->paginate(3);
+            ->Paginate(3);
           foreach($aftersale as $k=>$v){
               $v->aftersale_time  = date('Y-m-t',time());
               $v->aftersale_ctime  = date('Y-m-t ',time());
@@ -244,6 +244,21 @@ class AftersaleController extends Controller
             'aftersale_utime'=>time()
         ];
         $res = DB::table('crm_aftersale')->where($where)->update($Del);
+        if($res){
+            return $data=['status'=>1000,'msg'=>'删除成功'];
+        }else{
+            return $data=['status'=>1,'msg'=>'删除有误，再试试吧！'];
+        }
+    }
+    //售后 执行 批量 假删除
+    public function aftersaleDelAll(Request $request){
+        $id =  $request->input('id');
+        $id =  explode(',',ltrim($id,','));
+        $Del = [
+            'status'=>2,
+            'aftersale_utime'=>time()
+        ];
+        $res = DB::table('crm_aftersale')->whereIn('aftersale_id', $id)->update($Del);
         if($res){
             return $data=['status'=>1000,'msg'=>'删除成功'];
         }else{

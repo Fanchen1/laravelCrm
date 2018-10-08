@@ -29,12 +29,26 @@ class UserController extends Controller
     }
     //客户列表
     public function userList(Request $request){
+        $key = $request ->input();
+        unset($key['_token']);
+        $where =  [];
+       if(!empty($key['start'])){
+           $where['crm_user.status'] = 1;
+           $where = ["crm_user.ctime like'%$key[start]%'"];
+       }
+        if(!empty($key['end'])){
+            $where['crm_user.status'] = 1;
+            $where['crm_user.utime'] = ['eq',$key['end']];
+        }
+
+//print_r($where);
+
         $user = DB::table('crm_user')
             ->join('crm_user_type','crm_user.type_id','=','crm_user_type.type_id')
             ->join('crm_user_source','crm_user.source_id','=','crm_user_source.source_id')
             ->join('crm_user_rank','crm_user.rank_id','=','crm_user_rank.rank_id')
             ->join('crm_product','crm_user.product_id','=','crm_product.product_id')
-            ->where(['status'=>1])
+            ->where(['crm_user.status' => 1])
             ->Paginate(3);//分页
         foreach($user as $k=>$v){
             $v->ctime = date('Y-m-d H:i:s',time());
@@ -244,7 +258,21 @@ class UserController extends Controller
             return $data=['status'=>1,'msg'=>'删除有误，再试试吧！'];
         }
     }
-
+    //客户 批量 假删除
+    public function userDelAll(Request $request){
+        $id =  $request->input('id');
+        $id =  explode(',',ltrim($id,','));
+        $Del = [
+            'status'=>2,
+            'utime'=>time()
+        ];
+        $res = DB::table('crm_user')->whereIn('user_id', $id)->update($Del);
+        if($res){
+            return $data=['status'=>1000,'msg'=>'删除成功'];
+        }else{
+            return $data=['status'=>1,'msg'=>'删除有误，再试试吧！'];
+        }
+    }
 
 
 
