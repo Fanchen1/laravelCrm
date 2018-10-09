@@ -7,9 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<<<<<<< HEAD
     <script src="/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="/Admin/css/font.css">
     <link rel="stylesheet" href="/Admin/css/xadmin.css">
+=======
+    <link rel="stylesheet" href="/Admin/css/font.css">
+    <link rel="stylesheet" href="/Admin/css/xadmin.css">
+    <script type="text/javascript" src="/Admin/js/jquery-3.2.1.min.js"></script>
+    <script src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
+    <script src="{{asset('/jquery/jquery-3.2.1.min.js')}}"></script>
+>>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
 
     <script src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
@@ -30,7 +39,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
                 <dd><a href="/">切换帐号</a></dd>
-                <dd><a href="/quit">退出</a></dd>
+                <dd><a href="quit">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
@@ -51,12 +60,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="member-list.html">
+                        <a _href="/index.php/userList">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户列表</cite>
 
                         </a>
                     </li >
+<<<<<<< HEAD
                     <li>
                         <a _href="member-del.html">
                             <i class="iconfont">&#xe6a7;</i>
@@ -72,8 +82,11 @@
                         </a>
 
                     </li>
+=======
+>>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
                 </ul>
             </li>
+
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
@@ -82,7 +95,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/order">
+                        <a _href="/index.php/order">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单添加</cite>
                         </a>
@@ -90,7 +103,7 @@
                 </ul>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/order_list">
+                        <a _href="/index.php/order_list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
                         </a>
@@ -100,6 +113,7 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
+<<<<<<< HEAD
                     <cite>合同管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -124,13 +138,22 @@
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
                     <cite>分类管理</cite>
+=======
+                    <cite>跟单管理</cite>
+>>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="cate.html">
+                        <a _href="/index.php/tailorderAdd">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>多级分类</cite>
+                            <cite>新增跟单</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/index.php/tailorderList">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>跟单列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -138,14 +161,29 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>城市联动</cite>
+                    <cite>费用管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="city.html">
+                        <a _href="/index.php/costList">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>三级地区联动</cite>
+                            <cite>费用列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>售后管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/index.php/aftersaleList">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>售后列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -164,23 +202,18 @@
                         </a>
                     </li >
                     <li>
+                        <a _href="/index.php/PowerList">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>权限管理</cite>
+                        </a>
+                    </li >
+                    <li>
                         <a _href="admin-role.html">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>角色管理</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="admin-cate.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限分类</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="admin-rule.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限管理</cite>
-                        </a>
-                    </li >
+
                 </ul>
             </li>
             <li>
@@ -268,7 +301,7 @@
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='/welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
     </div>
@@ -278,7 +311,7 @@
 <!-- 中部结束 -->
 <!-- 底部开始 -->
 <div class="footer">
-    <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>
+    <div class="copyright">Copyright ?2017 x-admin v2.3 All Rights Reserved</div>
 </div>
 {{--<!-- 底部结束 -->--}}
 {{--<script>--}}

@@ -27,11 +27,17 @@ class IndexController extends Controller
             return redirect('/');
         }else{
             $user=session('user.account');
+<<<<<<< HEAD
 //            $city='河北';
+=======
+            $city='河北';
+>>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
 //            $weather=$this->weather($city);
             return view('welcome',['user'=>$user]);
+
         }
     }
+
     /**
      * 退出
      * @param Request $request
@@ -55,6 +61,7 @@ class IndexController extends Controller
     public function translateApi(Request $request){
         $value_code=$request->get('qian');
         $obj=new \Memcache();
+<<<<<<< HEAD
         $obj->connect('127.0.0.1','11211');
         $git=$obj->get('git');
         if(!empty($git[$value_code])){
@@ -81,6 +88,34 @@ class IndexController extends Controller
             $tmp = $arr['trans_result'][0]['dst'];
             return json_decode(json_encode(['status'=>100,'tmp'=>$tmp]),true);
         }
+=======
+        $res=$obj->connect('123.207.171.134','11211');
+//        $server=$_SERVER['REMOTE_ADDR'];
+//        $json=file_get_contents("http://ip.taobao.com/service/getIpInfo.php?ip=$server");
+        //dump($json);exit;
+        $city = '北京';//根据ip获取到的
+
+        $tmpKey = md5($city);
+
+        $pathFile = './' . $tmpKey;
+        if (!$obj->get($tmpKey)) {
+            //调用天气接口获取数据
+            $json = $this->curlRequest('https://www.sojson.com/open/api/weather/json.shtml?city='. $city);
+            $arr = json_decode($json, true);
+            $tmp = $arr['data']['forecast'][0];
+
+            //存储接口数据到缓存  数组转json字符串 存储到文件
+            $obj->set($tmpKey, json_encode($tmp),0,10);
+        } else {
+            //从缓存中获取数据
+            $data =$obj->get($tmpKey);
+            $tmp = json_decode($data, true);
+        }
+    //编码
+    //调用接口
+        $data = '<br>'.$city . '天气：' . $tmp['high'] . '，' . $tmp['low'] . ',天气' . $tmp['type'];
+        echo $data;
+>>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
     }
 //    public function weather()
 //    {

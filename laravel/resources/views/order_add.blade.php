@@ -8,12 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<<<<<<< HEAD
     <link rel="stylesheet" href="Admin/css/font.css">
     <link rel="stylesheet" href="Admin/css/xadmin.css">
     <script src="/jquery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="Admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="Admin/js/xadmin.js"></script>
 
+=======
+    <link rel="stylesheet" href="/Admin/css/font.css">
+    <link rel="stylesheet" href="/Admin/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
+>>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
 
