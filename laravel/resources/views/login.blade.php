@@ -133,7 +133,7 @@
             return false;
         }
         $.ajax({
-            url:'/check',
+            url:'/index.php/check',
             data:'username='+username+'&pwd='+pwd,
             type:'post',
             dataType:'json',

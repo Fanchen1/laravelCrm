@@ -5,19 +5,16 @@
     <title>后台登录-X-admin2.0</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="Admin/css/font.css">
-    <link rel="stylesheet" href="Admin/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="Admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Admin/js/xadmin.js"></script>
-    <script src="{{asset('/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="/jquery/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="/Admin/css/font.css">
+    <link rel="stylesheet" href="/Admin/css/xadmin.css">
 
-    <script type="text/javascript" src="{{asset('/layer/layer.js')}}"></script>
-    <script type="text/javascript" src="{{asset('/layer/mobile/need/layer.css')}}"></script>
+    <script src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
+    <script type="text/javascript" src="/layer/layer.js"></script>
+    <script type="text/javascript" src="/layer/mobile/need/layer.css"></script>
 
 </head>
 <body>
@@ -27,16 +24,6 @@
     <div class="left_open">
         <i title="展开左侧栏" class="iconfont">&#xe699;</i>
     </div>
-    {{--<ul class="layui-nav left fast-add" lay-filter="">--}}
-        {{--<li class="layui-nav-item">--}}
-            {{--<a href="javascript:;">+新增</a>--}}
-            {{--<dl class="layui-nav-child"> <!-- 二级菜单 -->--}}
-                {{--<dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>--}}
-                {{--<dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>--}}
-                {{--<dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>--}}
-            {{--</dl>--}}
-        {{--</li>--}}
-    {{--</ul>--}}
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
             <a href="javascript:;">{{$user}}</a>
@@ -83,30 +70,7 @@
                             <cite>用户管理</cite>
                             {{--<i class="iconfont nav_right">&#xe697;</i>--}}
                         </a>
-                        {{--<ul class="sub-menu">--}}
-                            {{--<li>--}}
-                                {{--<a _href="xxx.html">--}}
-                                    {{--<i class="iconfont">&#xe6a7;</i>--}}
-                                    {{--<cite>用户列表</cite>--}}
 
-                                {{--</a>--}}
-                            {{--</li >--}}
-                            {{--<li>--}}
-                                {{--<a _href="xx.html">--}}
-                                    {{--<i class="iconfont">&#xe6a7;</i>--}}
-                                    {{--<cite>用户删除</cite>--}}
-
-                                {{--</a>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<a _href="xx.html">--}}
-                                    {{--<i class="iconfont">&#xe6a7;</i>--}}
-                                    {{--<cite>等级管理</cite>--}}
-
-                                {{--</a>--}}
-                            {{--</li>--}}
-
-                        {{--</ul>--}}
                     </li>
                 </ul>
             </li>
@@ -129,6 +93,29 @@
                         <a _href="/order_list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>合同管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/pactAdd">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>合同添加</cite>
+                        </a>
+                    </li >
+                </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/pactList">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>合同列表</cite>
                         </a>
                     </li >
                 </ul>

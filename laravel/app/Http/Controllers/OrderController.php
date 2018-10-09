@@ -74,22 +74,99 @@ class OrderController extends Controller
     /**
      * 订单展示
      */
-    public function order_list(){
-        $orderList=DB::table('crm_order')->get();
+    public function order_list(Request $request){
+
+        $where=[
+            'order_status'=>1
+        ];
+        $count=DB::table('crm_order')->where($where)->count();
+        $orderList=DB::table('crm_order')->where($where)->get();
         $orderList=json_decode(json_encode($orderList),true);
         foreach($orderList as $k=>$v){
             $orderList[$k]['order_stime']=date('Y-m-d H:i:s',$v['order_stime']);
             $orderList[$k]['order_etime']=date('Y-m-d H:i:s',$v['order_etime']);
             $orderList[$k]['order_ctime']=date('Y-m-d H:i:s',$v['order_ctime']);
         }
-        $page=DB::table('crm_order')->simplePaginate(3);
-        //$page=json_decode(json_encode($page),true);
-//       print_r($page);exit;
-//        foreach($page as $k=>$v){
-//            $page['data']['order_stime']=date('Y-m-d H:i:s',$v['order_stime']);
-//            $page['data']['order_etime']=date('Y-m-d H:i:s',$v['order_etime']);
-//            $page['data']['order_ctime']=date('Y-m-d H:i:s',$v['order_ctime']);
+        $contrller= $request->post('contrller');
+        $username= $request->post('username');
+        $order=DB::table('crm_order')->where(['order_no'=>$username])->get();
+        $order=json_decode(json_encode($order),true);
+//        if(empty($order)){
+//            return json_encode(['status'=>1,'msg'=>'请输入正确的订单号']);
 //        }
-        return view('orderList',['orderList'=>$orderList,'page'=>$page]);
+        $order_search=DB::table('crm_order')->where(
+            function($query) use ($username){
+                if(isset($username)){
+                    $query->where("order_no","like",'%'.$username.'%');
+                }
+            }
+        )->where(function($query) use ($contrller){
+            if(isset($contrller)){
+                $query->where("order_status","like",'%'.$contrller.'%');
+            }
+        })->where($where)->simplePaginate(3);
+        return view('orderList',['orderList'=>$orderList,'page'=>$order_search,'count'=>$count]);
+    }
+    /**
+     * 用户删除
+     */
+    public function orderDel(Request $request){
+        $id=$request->post('id');
+        $where=[
+            'order_status'=>2
+        ];
+        $del=DB::table('crm_order')->where(['order_id'=>$id])->update($where);
+        if($del){
+            return json_encode(['status'=>100,'msg'=>'删除成功']);
+        }else{
+            return json_encode(['status'=>1,'msg'=>'删除失败']);
+        }
+    }
+    /**
+     * 订单批删
+     */
+    public function delAll(Request $request){
+        $id=$request->post('id');
+        $id=rtrim($id,',');
+        $id=explode(',',$id);
+        //echo $id;exit;
+        $where=[
+            'order_status'=>2
+        ];
+        $del=DB::table('crm_order')->whereIn('order_id',$id)->update($where);
+        if($del){
+            return json_encode(['status'=>100,'msg'=>'删除成功']);
+        }else{
+            return json_encode(['status'=>1,'msg'=>'删除失败']);
+        }
+    }
+    /**
+     * 订单修改
+     */
+    public function order_update(Request $request){
+        $id=$request->post('id');
+        $order_find=DB::table('crm_order')->where(['order_id'=>$id])->first();
+        $order_find=json_decode(json_encode($order_find),true);
+        return view('order_update',['find'=>$order_find]);
+    }
+
+    /**
+     * 执行修改
+     */
+    public function updateDo(Request $request){
+        $id=$request->post('id');
+        $post=$request->post();
+        $post_data=[
+            'order_imprest'=>$post['order_imprest'],
+            'order_price'=>$post['order_price'],
+            'order_contents'=>$post['order_contents'],
+            'order_utime'=>time(),
+        ];
+        $order=DB::table('crm_order')->where(['order_id'=>$id])->update($post_data);
+        if($order){
+            return json_encode(['status'=>100,'msg'=>'修改成功']);
+        }else{
+            return json_encode(['status'=>1,'msg'=>'修改失败']);
+        }
     }
 }
