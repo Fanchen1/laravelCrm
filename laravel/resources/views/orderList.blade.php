@@ -9,18 +9,10 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/Admin/css/font.css">
     <link rel="stylesheet" href="/Admin/css/xadmin.css">
-<<<<<<< HEAD
-    <script src="/jquery/jquery-3.2.1.min.js"></script>
-=======
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
->>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
+    <script type="text/javascript" src="/Admin/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 
 <body>
@@ -37,8 +29,6 @@
 <div class="x-body">
     <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so">
-            {{--<input class="layui-input" placeholder="开始日" name="start" id="start">--}}
-            {{--<input class="layui-input" placeholder="截止日" name="end" id="end">--}}
             <div class="layui-input-inline">
                 <select name="contrller">
                     <option>支付状态</option>
@@ -53,7 +43,7 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','/order',800,500)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','order',800,500)"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：{{$count}}条</span>
     </xblock>
     <table class="layui-table">
@@ -78,10 +68,8 @@
         </tr>
         </thead>
         <div class="page">
-            <div class="container">
                 <tbody>
                 @foreach ($page as $user)
-
                     <tr>
                         <td>
                             <div class="layui-unselect layui-form-checkbox check" idd = "{{$user->order_id}}" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
@@ -104,80 +92,42 @@
                         <td>{{$user->order_ctime}}</td>
                         <td>{{$user->order_utime}}</td>
                         <td class="td-manage">
-                            <a title="查看"  onclick="x_admin_show('编辑','/order_update?id={{$user->order_id}}')" href="javascript:;">
+                            <a title="查看"  onclick="x_admin_show('编辑','/index.php/order_update?id={{$user->order_id}}')" href="javascript:;">
                                 <i class="layui-icon">&#xe63c;</i>
                             </a>
                             <a title="删除" onclick="member_del(this,{{$user->order_id}})" href="javascript:;">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
                         </td>
-
                     </tr>
                 @endforeach
                 </tbody>
-            </div>
-
         </div>
     </table>
 </div>
 {{ $page->links() }}
 <script>
-<<<<<<< HEAD
     $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
     $('#search').on('click',function(){
         var contrller=$('[name=contrller]').val();
         var username=$('[name=username]').val();
         $.ajax({
-            url:'index.php/order_list',
+            url:'/index.php/order_list',
             data:'contrller='+contrller+'&username='+username,
             type:'post',
             dataType:'html',
             async:false,
-            success:function(json_info){
-                document.body.innerHTML=json_info;
-                if(json_info.status==100){
+            success:function(json_info) {
+                document.body.innerHTML = json_info;
+                if (json_info.status == 100) {
 
-                }else{
+                } else {
                     layer.msg(json_info.msg)
                 }
-=======
-    layui.use('laydate', function(){
-        var laydate = layui.laydate;
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#end' //指定元素
-        });
-   });
-
-    /*用户-停用*/
-    function member_stop(obj,id){
-        layer.confirm('确认要停用吗？',function(index){
-
-            if($(obj).attr('title')=='启用'){
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title','停用');
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
-            }else{
-               $(obj).attr('title','启用');
-               $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
->>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
             }
-        })
-    })
+            });
+    });
+
 
     /*用户-删除*/
     function member_del(obj,id){
@@ -204,8 +154,7 @@
     }
 
 
-    //layui-unselect layui-form-checkbox
-    //layui-unselect layui-form-checkbox layui-form-checked
+
     var str = '';
     function delAll () {
         str = ''
@@ -221,7 +170,7 @@
 //        var data = tableCheck.getData();
         layer.confirm('确认要删除吗？',function(index){
             $.ajax({
-                    url:'index.php/delAll',
+                    url:'/index.php/delAll',
                     data:'id='+str,
                     type:'post',
                     dataType:'json',
@@ -238,37 +187,11 @@
                 })
         });
 
-//                        $.ajax({
-//                    url:'index.php/delAll',
-//                    data:'id='+str,
-//                    type:'post',
-//                    dataType:'json',
-//                    async:false,
-//                    success:function(json_info){
-//                        if(json_info.status==100){
-//                            layer.msg(json_info.msg,{icon:1},function(){
-//                              //  history.go(0)
-//                            })
-//                        }else{
-//                            layer.msg(json_info.msg,{icon:2})
-//                        }
-//                    }
-//                })
 
     }
-//        var data = tableCheck.getData();
-//        layer.confirm('确认要删除吗？'+data,function(index){
-//            //捉到所有被选中的，发异步进行删除
-//            layer.msg('删除成功', {icon: 1});
-//           $(".layui-form-checked").not('.header').parents('tr').remove();
-//        });
+
 
 </script>
-{{--<script>var _hmt = _hmt || []; (function() {--}}
-        {{--var hm = document.createElement("script");--}}
-        {{--hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";--}}
-        {{--var s = document.getElementsByTagName("script")[0];--}}
-        {{--s.parentNode.insertBefore(hm, s);--}}
-    {{--})();</script>--}}
+
 </body>
 

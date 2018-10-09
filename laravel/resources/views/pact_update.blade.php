@@ -7,20 +7,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="Admin/css/font.css">
-    <link rel="stylesheet" href="Admin/css/xadmin.css">
-    <script src="/jquery/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="Admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="Admin/js/xadmin.js"></script>
-
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-    <!--[if lt IE 9]>
-
-    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <script type="text/javascript" src="layer/layer.js"></script>
-    <script type="text/javascript" src="layer/mobile/need/layer.css"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="/Admin/css/font.css">
+    <link rel="stylesheet" href="/Admin/css/xadmin.css">
+    <script type="text/javascript" src="/Admin/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
 </head>
 
 <body>
@@ -50,7 +41,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button class="layui-btn" onclick="x_admin_show('添加用户','/pact_add',500,200)">增加</button>
+                <button class="layui-btn" onclick="x_admin_show('添加用户','pact_add',500,200)">增加</button>
             </div>
         </div>
         <div class="layui-form-item">
@@ -61,7 +52,7 @@
                 <input type="text" id="order_id" value="{{$pacttypeList['order_id']}}" name="order_id"
                        class="layui-input" >
             </div>
-            <button class="layui-btn" onclick="x_admin_show('订单列表','/orderList',1000,400)">...</button>
+            <button class="layui-btn" onclick="x_admin_show('订单列表','orderList',1000,400)">...</button>
         </div>
         <div class="layui-form-item">
             <label  class="layui-form-label">
@@ -199,7 +190,7 @@
             layer.msg('详情备注必填');
         }
         $.ajax({
-            url:'/pactUpdate',
+            url:'pactUpdate',
             data:'pact_id='+pact_id+'&pact_no='+pact_no+'&order_id='+order_id+'&is_tax='+is_tax+'&is_invoice='+is_invoice+'&pact_stime='+pact_stime+'&pact_etime='+pact_etime+'&pact_payment='+pact_payment+'&pact_totalmoney='+pact_totalmoney+'&pact_contents='+pact_contents+'&modules='+modules,
             type:'post',
             dataType:'json',

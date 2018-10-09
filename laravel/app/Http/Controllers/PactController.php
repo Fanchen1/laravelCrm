@@ -66,6 +66,7 @@ class PactController extends Controller
      */
     public function pactAddAll(Request $request){
         $post=$request->post();
+       // print_r($post);exit;
         $pact_stime=str_replace('T',' ',$post['pact_stime']);
         $pact_etime=str_replace('T',' ',$post['pact_etime']);
         $pact_stime=strtotime($pact_stime);
@@ -81,8 +82,9 @@ class PactController extends Controller
             'is_invoice'=>$post['is_invoice'],
             'is_tax'=>$post['is_tax'],
             'pact_contents'=>$post['pact_contents'],
+            'pact_status'=>1,
             'pact_ctime'=>time(),
-            'pact_status'=>1
+
         ];
             $pactAdd=DB::table('crm_pact')->insert($pact_add);
             if($pactAdd){

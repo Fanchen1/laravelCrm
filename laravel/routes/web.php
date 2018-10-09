@@ -1,6 +1,7 @@
 <?php
 
 /*
+ *
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -143,26 +144,8 @@ Route::any('/Costtype_dataDo','FrameController@Costtype_dataDo');//费用类型 
 Route::any('/Classify','FrameController@Classify');//反顾分类
 Route::any('/ClassifyDo','FrameController@ClassifyDo');//反顾分类 删除 --
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::any('/Pacttype','FrameController@Pacttype');//合同分类
+Route::any('/PacttypeDo','FrameController@PacttypeDo');//合同分类 删除 --
 
 Route::any('/comment','UserController@comment');//考试  -- 评论
 

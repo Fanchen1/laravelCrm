@@ -7,24 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<<<<<<< HEAD
-    <script src="/jquery/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="/Admin/css/font.css">
-    <link rel="stylesheet" href="/Admin/css/xadmin.css">
-=======
     <link rel="stylesheet" href="/Admin/css/font.css">
     <link rel="stylesheet" href="/Admin/css/xadmin.css">
     <script type="text/javascript" src="/Admin/js/jquery-3.2.1.min.js"></script>
     <script src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
-    <script src="{{asset('/jquery/jquery-3.2.1.min.js')}}"></script>
->>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
-
-    <script src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
-    <script type="text/javascript" src="/layer/layer.js"></script>
-    <script type="text/javascript" src="/layer/mobile/need/layer.css"></script>
-
 </head>
 <body>
 <!-- 顶部开始 -->
@@ -63,15 +50,13 @@
                         <a _href="/index.php/userList">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户列表</cite>
-
                         </a>
                     </li >
-<<<<<<< HEAD
+
                     <li>
                         <a _href="member-del.html">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户删除</cite>
-
                         </a>
                     </li>
                     <li>
@@ -82,8 +67,7 @@
                         </a>
 
                     </li>
-=======
->>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
+
                 </ul>
             </li>
 
@@ -113,13 +97,13 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-<<<<<<< HEAD
+
                     <cite>合同管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/pactAdd">
+                        <a _href="/index.php/pactAdd">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>合同添加</cite>
                         </a>
@@ -127,7 +111,7 @@
                 </ul>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/pactList">
+                        <a _href="/index.php/pactList">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>合同列表</cite>
                         </a>
@@ -137,10 +121,7 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>分类管理</cite>
-=======
                     <cite>跟单管理</cite>
->>>>>>> 1d2c295046ecd4b56168ddeb684cb0714e1b9673
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
@@ -273,6 +254,14 @@
                                 <a _href="/index.php/Classify">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>反顾分类列表</cite>
+                                </a>
+                            </li >
+                        </ul>
+                        <ul class="sub-menu">
+                            <li>
+                                <a _href="/index.php/Pacttype">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>合同分类列表</cite>
                                 </a>
                             </li >
                         </ul>

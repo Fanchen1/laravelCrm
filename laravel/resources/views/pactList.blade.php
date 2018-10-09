@@ -9,14 +9,10 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/Admin/css/font.css">
     <link rel="stylesheet" href="/Admin/css/xadmin.css">
-    <script src="/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/Admin/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/Admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/Admin/js/xadmin.js"></script>
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 </head>
 
 <body>
@@ -47,7 +43,7 @@
         </tr>
         </thead>
 
-            <div class="container">
+
                 <tbody>
                 @foreach ($pact as $v)
 
@@ -72,7 +68,7 @@
                             <td><button class="layui-btn layui-btn-disabled layui-btn-xs">已删除</button></td>
                         @endif
                         <td class="td-manage">
-                            <a title="查看"  onclick="x_admin_show('编辑','/pact_update?id={{$v->pact}}')" href="javascript:;">
+                            <a title="查看"  onclick="x_admin_show('编辑','pact_update?id={{$v->pact}}')" href="javascript:;">
                                 <i class="layui-icon">&#xe63c;</i>
                             </a>
                             <a title="删除" onclick="member_del(this,{{$v->pact}})" href="javascript:;">
@@ -82,9 +78,6 @@
                     </tr>
                 @endforeach
                 </tbody>
-            </div>
-
-
     </table>
 </div>
 <div class="page">
@@ -97,7 +90,7 @@
     function member_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
             $.ajax({
-                url:'/pactDel',
+                url:'pactDel',
                 data:'id='+id,
                 type:'post',
                 dataType:'json',
@@ -116,9 +109,9 @@
     }
     //审核
     $('#shen').on('click',function(){
-        var id=$('.tr').find('td').html()
-        alert(id)
-//        location.href='/audit';
+        var id=$('.tr').find('td').html();
+        alert(id);
+      //  location.href='audit';
     })
 
 

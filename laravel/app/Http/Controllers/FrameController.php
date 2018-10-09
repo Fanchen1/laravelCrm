@@ -129,10 +129,26 @@ class FrameController extends Controller
         }
     }
 
+    //合同分类
+    public function Pacttype(){
+        $Pacttype= DB::table('crm_pacttype')->get();
+        $Pacttype = json_decode(json_encode($Pacttype),true);
+        return view('Frame.FramePacttype',['Pacttype'=>$Pacttype,]);
+    }
 
 
-
-
+    public function PacttypeDo(Request $request){
+        $id =   $request->input('id');
+        $where = [
+            'pacttype_id'=>$id,
+        ];
+        $res = DB::table('crm_pacttype')->where($where)->delete();
+        if($res){
+            return $data=['status'=>1000,'msg'=>'删除成功'];
+        }else{
+            return $data=['status'=>1,'msg'=>'删除有误，再试试吧！'];
+        }
+    }
 
 
 
