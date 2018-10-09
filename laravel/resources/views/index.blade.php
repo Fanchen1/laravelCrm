@@ -167,12 +167,75 @@
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-role.html">
+                        <a _href="/index.php/RoleList">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>角色管理</cite>
                         </a>
                     </li >
 
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>下拉框管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="javascript:;">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>下拉框列表</cite>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a _href="/index.php/Type">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>客户类型列表</cite>
+                                </a>
+                            </li >
+                        </ul>
+                        <ul class="sub-menu">
+                            <li>
+                                <a _href="/index.php/Source">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>客户来源列表</cite>
+                                </a>
+                            </li >
+                        </ul>
+                        <ul class="sub-menu">
+                            <li>
+                                <a _href="/index.php/Type_data">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>跟单类型列表</cite>
+                                </a>
+                            </li >
+                        </ul>
+                        <ul class="sub-menu">
+                            <li>
+                                <a _href="/index.php/Plan_data">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>跟单进度列表</cite>
+                                </a>
+                            </li >
+                        </ul>
+                        <ul class="sub-menu">
+                            <li>
+                                <a _href="/index.php/Costtype_data">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>费用 类型列表</cite>
+                                </a>
+                            </li >
+                        </ul>
+                        <ul class="sub-menu">
+                            <li>
+                                <a _href="/index.php/Classify">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>反顾分类列表</cite>
+                                </a>
+                            </li >
+                        </ul>
+                    </li >
                 </ul>
             </li>
             <li>

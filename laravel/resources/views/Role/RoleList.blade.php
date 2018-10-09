@@ -42,7 +42,7 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加权限','/index.php/PowerAdd',1000,600)"><i class="layui-icon"></i>权限添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加角色','/index.php/RoleAdd',1000,600)"><i class="layui-icon"></i>角色添加</button>
         {{--<span class="x-right" style="line-height:40px">共有数据：88 条</span>--}}
     </xblock>
     <table class="layui-table">
@@ -62,28 +62,28 @@
         </tr>
         </thead>
         <tbody name="shu">
-            @foreach($power as $v)
-                <tr>
-                    <td>
-                        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary" ><i class="layui-icon">&#xe605;</i></div>
-                    </td>
-                    <td>{{$v['power_id']}}</td>
-                    <td>{{$v['power_name']}}</td>
-                    <td>{{$v['power_url']}}</td>
-                    <td>{{$v['power_status']}}</td>
-                    <td>{{$v['parent_id']}}</td>
-                    <td>{{$v['power_level']}}</td>
-                    <td>{{$v['power_ctime']}}</td>
-                    <td class="td-manage">
-                        <a title="编辑"  onclick="x_admin_show('编辑','/index.php/userUpdate?id={{$v['power_id']}}',1000,600)" href="javascript:;">
-                            <i class="layui-icon">&#xe642;</i>
-                        </a>
-                        <a title="删除" onclick="member_del(this,{{$v['power_id']}})" href="javascript:;">
-                            <i class="layui-icon">&#xe640;</i>
-                        </a>
-                    </td>
-                </tr>
-            @endforeach
+        {{--@foreach($power as $v)--}}
+            {{--<tr>--}}
+                {{--<td>--}}
+                    {{--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary" ><i class="layui-icon">&#xe605;</i></div>--}}
+                {{--</td>--}}
+                {{--<td>{{$v['power_id']}}</td>--}}
+                {{--<td>{{$v['power_name']}}</td>--}}
+                {{--<td>{{$v['power_url']}}</td>--}}
+                {{--<td>{{$v['power_status']}}</td>--}}
+                {{--<td>{{$v['parent_id']}}</td>--}}
+                {{--<td>{{$v['power_level']}}</td>--}}
+                {{--<td>{{$v['power_ctime']}}</td>--}}
+                {{--<td class="td-manage">--}}
+                    {{--<a title="编辑"  onclick="x_admin_show('编辑','/index.php/userUpdate?id={{$v['power_id']}}',1000,600)" href="javascript:;">--}}
+                        {{--<i class="layui-icon">&#xe642;</i>--}}
+                    {{--</a>--}}
+                    {{--<a title="删除" onclick="member_del(this,{{$v['power_id']}})" href="javascript:;">--}}
+                        {{--<i class="layui-icon">&#xe640;</i>--}}
+                    {{--</a>--}}
+                {{--</td>--}}
+            {{--</tr>--}}
+        {{--@endforeach--}}
         </tbody>
     </table>
     <div class="page">

@@ -61,12 +61,14 @@ Route::any('/aftersaleDelAll','AftersaleController@aftersaleDelAll'); //售后�
     //权限分类
     Route::any('/PowerAdd','PowerController@PowerAdd');//权限添加
     Route::any('/PowerAddDo','PowerController@PowerAddDo');//权限执行 -- 添加
-    Route::any('/PowerList','PowerController@PowerList');//权限添加
+    Route::any('/PowerList','PowerController@PowerList');//权限列表
+    //角色
+    Route::any('/RoleList','RoleController@RoleList');//角色列表
+    Route::any('/RoleAdd','RoleController@RoleAdd');//权限添加
 
 
 
-
-//跟单
+// ----------跟单
 Route::any('tailorderAdd', 'admin\TailorderController@tailorderAdd');
 Route::any('tailorderAddDo', 'admin\TailorderController@tailorderAddDo');
 Route::any('tailorderList', 'admin\TailorderController@tailorderList');
@@ -83,7 +85,7 @@ Route::any('tailorderPlanAdd', 'admin\TailorderController@tailorderPlanAdd');
 Route::any('tailorderPlanAddDo', 'admin\TailorderController@tailorderPlanAddDo');
 
 /**
- *费用管理
+ * ------------------------费用管理
  */
 //展示
 Route::any('costList', 'admin\CostController@costList');
@@ -104,7 +106,24 @@ Route::any('costUpd', 'admin\CostController@costUpd');
 Route::any('costUpdDo', 'admin\CostController@costUpdDo');
 
 
+// =---------下拉框
+Route::any('/Type','FrameController@Type');//客户类型 列表
+Route::any('/TypeDo','FrameController@TypeDo');//客户类型 删除 --
 
+Route::any('/Source','FrameController@Source');//客户来源 列表
+Route::any('/SourceDo','FrameController@SourceDo');//客户来源 删除 --
+
+Route::any('/Type_data','FrameController@Type_data');//跟单类型 列表
+Route::any('/Type_dataDo','FrameController@Type_dataDo');//跟单类型 删除 --
+
+Route::any('/Plan_data','FrameController@Plan_data');//跟单进度 列表
+Route::any('/Plan_dataDo','FrameController@Plan_dataDo');//跟单进度 删除 --
+
+Route::any('/Costtype_data','FrameController@Costtype_data');//费用类型 列表
+Route::any('/Costtype_dataDo','FrameController@Costtype_dataDo');//费用类型 删除 --
+
+Route::any('/Classify','FrameController@Classify');//反顾分类
+Route::any('/ClassifyDo','FrameController@ClassifyDo');//反顾分类 删除 --
 
 
 

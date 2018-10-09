@@ -32,18 +32,9 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-            <input class="layui-input" placeholder="开始日" name="start" id="start">
-            <input class="layui-input" placeholder="截止日" name="end" id="end">
-            <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-            <button class="layui-btn"  type="button" name="sou"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-    </div>
+
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加权限','/index.php/PowerAdd',1000,600)"><i class="layui-icon"></i>权限添加</button>
-        {{--<span class="x-right" style="line-height:40px">共有数据：88 条</span>--}}
     </xblock>
     <table class="layui-table">
         <thead>
@@ -51,39 +42,26 @@
             <th>
                 <div class="layui-unselect header layui-form-checkbox" lay-skin="primary" ><i class="layui-icon">&#xe605;</i></div>
             </th>
-            <th>ID</th>
-            <th>权限名称</th>
-            <th>访问路径</th>
-            <th>是否启用</th>
-            <th>父级id</th>
-            <th>等级</th>
-            <th>添加时间</th>
-            <th>操作</th>
+            <th>客户来源列表</th>
+            <th>操作/删除</th>
         </tr>
         </thead>
         <tbody name="shu">
-            @foreach($power as $v)
-                <tr>
-                    <td>
-                        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary" ><i class="layui-icon">&#xe605;</i></div>
-                    </td>
-                    <td>{{$v['power_id']}}</td>
-                    <td>{{$v['power_name']}}</td>
-                    <td>{{$v['power_url']}}</td>
-                    <td>{{$v['power_status']}}</td>
-                    <td>{{$v['parent_id']}}</td>
-                    <td>{{$v['power_level']}}</td>
-                    <td>{{$v['power_ctime']}}</td>
-                    <td class="td-manage">
-                        <a title="编辑"  onclick="x_admin_show('编辑','/index.php/userUpdate?id={{$v['power_id']}}',1000,600)" href="javascript:;">
-                            <i class="layui-icon">&#xe642;</i>
-                        </a>
-                        <a title="删除" onclick="member_del(this,{{$v['power_id']}})" href="javascript:;">
-                            <i class="layui-icon">&#xe640;</i>
-                        </a>
-                    </td>
-                </tr>
-            @endforeach
+        @foreach($source as $v)
+            <tr>
+                <td>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id={{$v['source_id']}}><i class="layui-icon">&#xe605;</i></div>
+                </td>
+                <td>
+                    {{$v['user_source']}}
+                </td>
+                <td>
+                    <a title="删除" onclick="member_del(this,{{$v['source_id']}})" href="javascript:;">
+                        <i class="layui-icon">&#xe640;</i>
+                    </a>
+                </td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
     <div class="page">
@@ -114,7 +92,7 @@
     function member_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
             $.ajax({
-                url: '/index.php/userDel',
+                url: '/index.php/SourceDo',
                 type: 'post',
                 data: 'id='+id+'&_token=' + '{{csrf_token()}}',
                 dataType: 'json',
@@ -159,25 +137,6 @@
         });
     }
 
-    /* 客户搜索*/
-    $('[name=sou]').on('click',function(){
-        var start = $('[name=start]').val();
-        var end = $('[name=end]').val();
-        var username = $('[name=username]').val();
-        $.ajax({
-            url: '/index.php/userList',
-            type: 'post',
-            data: 'start='+start+'&end='+end+'&username='+username+'&_token=' + '{{csrf_token()}}',
-            dataType: 'json',
-            async: false,
-            success: function (json_info) {
-                if (json_info.status == 1000) {
-                    $('#shu').html(json_info);
-                    return false;
-                }
-            }
-        });
-    });
 
 
 </script>

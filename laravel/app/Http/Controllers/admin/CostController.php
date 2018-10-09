@@ -98,6 +98,7 @@ class CostController extends Controller{
     public function costTypeAdd(){
         return view('cost/costTypeAdd');
     }
+
     //执行费用类型添加
     public function costTypeAddDo(){
         $typename=input::post('typename');
